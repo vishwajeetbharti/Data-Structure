@@ -47,7 +47,7 @@ void display()
       	 	a[i] =a[i+1];
 		   }
       	 n=n-1;
-      	 printf("Enter the deleted elements is =%d",val);
+      	 printf("Enter the deleted elements is %d",val);
       	  }
       	  
       	  int main()

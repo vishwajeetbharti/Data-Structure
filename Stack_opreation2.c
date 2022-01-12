@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#define max_size 3
-int stack[max_size],top=1,flag=1;
+#define max_size 4
+int stack[max_size],top=-1,flag=1;
 int i,temp,item,rev[max_size],num[max_size];
 void push()
 {
@@ -14,14 +14,14 @@ void push()
 	{
 		printf("Enter the element to be inserted:-\t");
 		scanf("%d",&item);
-		stack[top]=item;
 		top++;
+		stack[top]=item;
 	}
 	temp=top;
 }
 void pop()
 {
-	if(top==1)
+	if(top==-1)
 	{
 		printf("Stack Underflow:");
 		flag=0;
@@ -34,13 +34,13 @@ void pop()
 }
 void palin()
 {
-	if(top==1)
+	if(top==-1)
 	{
 		printf("Push some elements into the stack.\n");
 	}
 	else
 	{
-		while(top!=1)
+		while(top!=-1)
 		{
 			rev[top]=stack[top];
 			pop();
@@ -48,7 +48,7 @@ void palin()
 		top=temp;
 		for(i=0;i<=temp;i++)
 		{
-			if(stack[top--]==rev[i])
+			if(stack[top]==rev[i])
 			{
 				if(i==temp)
 				{
@@ -61,8 +61,8 @@ void palin()
 }
 	void display()
 	{
-		top=temp;
-		if(top==1)
+		//top=temp;
+		if(top==-1)
 		{
 			printf("\nStack is empty:");
 		}
