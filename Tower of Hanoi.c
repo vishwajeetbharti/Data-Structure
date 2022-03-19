@@ -1,5 +1,5 @@
-#include<stdio.h>
-Tower(int k, char frompeg,char midpeg, char topeg)
+  #include<stdio.h>
+Tower(int k, char frompeg,char topeg, char midpeg)
 {
 	if(k==1)
 	{
