@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 #define max_size 4
-int stack[max_size],top=-1,flag=1;
+int stack[max_size],top=-1,flag=1,count=-1;
 int i,temp,item,rev[max_size],num[max_size];
 void push()
 {
@@ -12,7 +12,7 @@ void push()
 	}
 	else
 	{
-		printf("Enter the element to be inserted:-\t");
+		printf("Enter the element to be inserted:-\n");
 		scanf("%d",&item);
 		top++;
 		stack[top]=item;
@@ -40,28 +40,26 @@ void palin()
 	}
 	else
 	{
-		while(top!=-1)
-		{
-			rev[top]=stack[top];
-			pop();
-		}
-		top=temp;
+	    temp=top;
 		for(i=0;i<=temp;i++)
-		{
-			if(stack[top]==rev[i])
-			{
-				if(i==temp)
-				{
-					printf("Palindrome.\n");
-				}
-			}
-		}
+		 {
+		 	rev[i]=stack[top];
+		 	top--;
+		 }
+		 for(i=0;i<=temp;i++)
+		 {
+		 	if(stack[i]==rev[i])
+		 	count++;
+		 }
+		 top=temp;
+		if(count==temp)
+		printf("Palindrome.\n");
+		else
 		printf("Not Palindrome.\n");
 	}
 }
 	void display()
 	{
-		//top=temp;
 		if(top==-1)
 		{
 			printf("\nStack is empty:");
@@ -71,7 +69,7 @@ void palin()
 			printf("\nThe stack elements are:\n");
 			for(i=top;i>=0;i--)
 			{
-				printf("%d\n",stack[i]);
+				printf("%d\t",stack[i]);
 			}
 		}
 	}
