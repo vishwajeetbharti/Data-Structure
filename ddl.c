@@ -24,7 +24,7 @@ void create(int s,char n,char b,int u)
 		head->sn=s;
 		strcpy(head->name,n);
         strcpy(head->branch,b);
-        head->usn=n;
+        head->usn=u;
         head->left=NULL;
         head->right=NULL;
         tail=head;
@@ -33,10 +33,10 @@ void create(int s,char n,char b,int u)
 	else
 	{
 		temp1=(struct Enode*)malloc(1*sizeof(struct Enode));
-        head->sn=s;
-		strcpy(temp1->name,n);
-        strcpy(temp1->branch,b);
-        head->usn=n;
+        temp1->sn=s;
+		strcpy(temp1->name,&n);
+        strcpy(temp1->branch,&b);
+        temp1->usn=u;
         tail->right=temp1;
         temp1->right=NULL;
         temp1->left=tail;
@@ -69,10 +69,10 @@ void display()
 void ins_beg(int s,char n,char b,int u)
 {
 	temp1=(struct Enode*)malloc(1*sizeof(struct Enode));
-	strcpy(temp1->sn,s);
-	strcpy(temp1->name,n);
-    strcpy(temp1->branch,b);
-    head->usn=n;
+	temp1->sn=s;
+	strcpy(temp1->name,&n);
+    strcpy(temp1->branch,&b);
+    temp1->usn=u;
     if(head==NULL)
     {
     	head=tail=temp1;
@@ -88,10 +88,10 @@ void ins_beg(int s,char n,char b,int u)
 void ins_end(int s,char n,char b,int u)
 {
 	temp1=(struct Enode*)malloc(1*sizeof(struct Enode));
-	strcpy(temp1->sn,s);
-	strcpy(temp1->name,n);
-    strcpy(temp1->branch,b);
-    head->usn=n;
+	temp1->sn=s;
+	strcpy(temp1->name,&n);
+    strcpy(temp1->branch,&b);
+    temp1->usn=u;
     if(tail==NULL)
     {
     	head=tail=temp1;
@@ -130,7 +130,7 @@ void del_end()
 		printf("deletion not possible");
 		return;
 	}
-	else if(temp1->left==temp1->right==NULL)
+	else if(temp1->left==NULL&&temp1->right==NULL)
 	{
 		free(temp1);
 		head=tail=NULL;
@@ -141,11 +141,11 @@ void del_end()
 		while(temp1!=tail)
 		{
 			temp1=temp1->right;
-			tail=tail->left;
-			tail->right=NULL;
-			free(temp1);
-			count--;
 		}
+		tail=tail->left;
+		tail->right=NULL;
+		free(temp1);
+		count--;
 	}
 }
 void main()
