@@ -36,6 +36,7 @@ void in2pos(char infix[],char postfix[])
 {
 	int top=-1,i,j=0;
 	char symbol,s[100];
+	
 	s[++top]='#';
 	
 	for(i=0;i<strlen(infix);i++)
@@ -43,8 +44,7 @@ void in2pos(char infix[],char postfix[])
 		symbol=infix[i];
 		while(F(s[top])>G(symbol))
 		{
-			postfix[j]=s[top--];
-			j++;
+			postfix[j++]=s[top--];
 		}
 		if(F(s[top])!=G(symbol))
 		s[++top]=symbol;
@@ -63,5 +63,5 @@ int main()
 	printf("\nEnter the infix statement..\n");
 	scanf("%s",infix);
 	in2pos(infix,postfix);
-	printf("\nThe postfix expession for\n%s is\n%s",infix,postfix);
+	printf("\nThe postfix expession for %s->\t%s",infix,postfix);
 }
