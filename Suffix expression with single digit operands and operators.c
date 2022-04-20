@@ -8,8 +8,8 @@ double cal(double op1,char op,double op2)
 	{
 		case'+': return(op1+op2);
 		case'-': return(op1-op2);
-		case'/': return(op1/op2);
 		case'*': return(op1*op2);
+		case'/': return(op1/op2);
 		case'^': return(pow(op1,op2));
 	}
 }
